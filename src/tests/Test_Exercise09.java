@@ -65,8 +65,8 @@ public class Test_Exercise09 {
     @Test
     public void testLargeNumbers() {
         // Test large numbers
-        assertEquals("11111111111111111111111111111111", Exercise09_NumberSystemConverter.decimal2Binary(Integer.MAX_VALUE));
-        assertEquals("37777777777", Exercise09_NumberSystemConverter.decimal2octal(Integer.MAX_VALUE));
+        assertEquals("1111111111111111111111111111111", Exercise09_NumberSystemConverter.decimal2Binary(Integer.MAX_VALUE));
+        assertEquals("17777777777", Exercise09_NumberSystemConverter.decimal2octal(Integer.MAX_VALUE));
         assertEquals("7FFFFFFF", Exercise09_NumberSystemConverter.decimal2hex(Integer.MAX_VALUE));
     }
 }

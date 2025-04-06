@@ -15,7 +15,7 @@ public class Test_Exercise08 {
         String text = "Der Hund läuft im Garten. Der Garten ist groß.";
         Map<String, Integer> result = Exercise08_WordCounter.zaehleWoerter(text);
         
-        assertEquals(6, result.size()); // 6 different words
+        assertEquals(7, result.size()); // 6 different words
         assertEquals(Integer.valueOf(2), result.get("der"));
         assertEquals(Integer.valueOf(2), result.get("garten"));
         assertEquals(Integer.valueOf(1), result.get("hund"));
@@ -61,8 +61,8 @@ public class Test_Exercise08 {
         Map<String, Integer> result = Exercise08_WordCounter.zaehleWoerter(text);
         
         assertEquals(3, result.size());
-        assertEquals(Integer.valueOf(4), result.get("hallo"));
-        assertEquals(Integer.valueOf(4), result.get("welt"));
+        assertEquals(Integer.valueOf(3), result.get("hallo"));
+        assertEquals(Integer.valueOf(3), result.get("welt"));
         assertEquals(Integer.valueOf(1), result.get("hallo-welt"));
     }
     
@@ -72,7 +72,7 @@ public class Test_Exercise08 {
         String text = "Java 8 ist großartig! C++ 11 und Python 3.6 sind auch gut.";
         Map<String, Integer> result = Exercise08_WordCounter.zaehleWoerter(text);
         
-        assertEquals(9, result.size());
+        assertEquals(12, result.size());
         assertEquals(Integer.valueOf(1), result.get("java"));
         assertEquals(Integer.valueOf(1), result.get("8"));
         assertEquals(Integer.valueOf(1), result.get("ist"));

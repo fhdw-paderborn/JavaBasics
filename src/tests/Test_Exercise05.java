@@ -34,21 +34,21 @@ public class Test_Exercise05 {
     @Test
     public void testHighInterestRates() {
         // High interest rates
-        assertEquals(2653.30, Exercise05_InterestCalclator.calculateCompoundInterest(1000.0, 0.20, 5), DELTA);
-        assertEquals(32817.98, Exercise05_InterestCalclator.calculateCompoundInterest(5000.0, 0.15, 12), DELTA);
+        assertEquals(2488.32, Exercise05_InterestCalclator.calculateCompoundInterest(1000.0, 0.20, 5), DELTA);
+        assertEquals(26751.25, Exercise05_InterestCalclator.calculateCompoundInterest(5000.0, 0.15, 12), DELTA);
     }
     
     @Test
     public void testLongTermInvestment() {
         // Long-term investments
         assertEquals(4321.94, Exercise05_InterestCalclator.calculateCompoundInterest(1000.0, 0.05, 30), DELTA);
-        assertEquals(10062.66, Exercise05_InterestCalclator.calculateCompoundInterest(2000.0, 0.04, 40), DELTA);
+        assertEquals(9602.04, Exercise05_InterestCalclator.calculateCompoundInterest(2000.0, 0.04, 40), DELTA);
     }
     
     @Test
     public void testNegativeInterest() {
         // Negative interest (can occur in reality)
-        assertEquals(774.40, Exercise05_InterestCalclator.calculateCompoundInterest(1000.0, -0.05, 5), DELTA);
-        assertEquals(3706.59, Exercise05_InterestCalclator.calculateCompoundInterest(5000.0, -0.03, 10), DELTA);
+        assertEquals(773.78, Exercise05_InterestCalclator.calculateCompoundInterest(1000.0, -0.05, 5), DELTA);
+        assertEquals(3687.12, Exercise05_InterestCalclator.calculateCompoundInterest(5000.0, -0.03, 10), DELTA);
     }
 }

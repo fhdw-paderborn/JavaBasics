@@ -13,7 +13,6 @@ public class Test_Exercise03 {
         // Valid ISBN-10 numbers
         assertTrue(Exercise03_ISBN_Validator.isValidISBN10("3866801920"));
         assertTrue(Exercise03_ISBN_Validator.isValidISBN10("0262033844"));
-        assertTrue(Exercise03_ISBN_Validator.isValidISBN10("1234567890"));
         assertTrue(Exercise03_ISBN_Validator.isValidISBN10("0131103628"));
     }
     
