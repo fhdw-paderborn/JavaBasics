@@ -22,10 +22,34 @@ public class Exercise10_WordCounter {
      * @return A map with words as keys and their frequencies as values
      */
     public static Map<String, Integer> zaehleWoerter(String text) {
-        // TODO: Implement the word counting
-        // Note: Use a map to store the words and their frequencies
-        // Split the text into words, remove punctuation, and count the occurrences
-        return new HashMap<>(); // Replace this empty map with the correct result
+        Map<String, Integer> wordFrequencies = new HashMap<>();
+        
+        // If text is empty, return empty map
+        if (text == null || text.isEmpty()) {
+            return wordFrequencies;
+        }
+        
+        // Split the text into words (by whitespace)
+        String[] words = text.split("\\s+");
+        
+        // Process each word
+        for (String word : words) {
+            // Skip empty words
+            if (word.isEmpty()) {
+                continue;
+            }
+            
+            // Remove punctuation at the end of the word
+            word = word.replaceAll("[.,!?:;]$", "");
+            
+            // Convert to lowercase
+            word = word.toLowerCase();
+            
+            // Update the word count in the map
+            wordFrequencies.put(word, wordFrequencies.getOrDefault(word, 0) + 1);
+        }
+        
+        return wordFrequencies;
     }
     
     public static void main(String[] args) {

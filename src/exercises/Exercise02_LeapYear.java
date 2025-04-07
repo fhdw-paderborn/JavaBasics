@@ -20,9 +20,20 @@ public class Exercise02_LeapYear {
      * @return true if it is a leap year, otherwise false
      */
     public static boolean isLeapYear(int year) {
-        // TODO: Implement the leap year verification according to the rules above
-        // Use if-statements and logical and relational operators
-        return false; // Replace this value with the correct calculation
+        // If year is divisible by 400, it is a leap year
+        if (year % 400 == 0) {
+            return true;
+        }
+        // If year is divisible by 100, it is not a leap year
+        if (year % 100 == 0) {
+            return false;
+        }
+        // If year is divisible by 4, it is a leap year
+        if (year % 4 == 0) {
+            return true;
+        }
+        // Otherwise, it is not a leap year
+        return false;
     }
     
     public static void main(String[] args) {

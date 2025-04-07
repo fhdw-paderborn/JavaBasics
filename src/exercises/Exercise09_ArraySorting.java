@@ -19,14 +19,32 @@ public class Exercise09_ArraySorting {
      * @return The sorted array (in ascending order)
      */
     public static int[] bubbleSort(int[] numbers) {
-        // TODO: Implement the Bubble Sort algorithm
-        // Note: Use two nested loops and swap adjacent elements
-        // if they are in the wrong order
-        
         // Create a copy of the array to avoid modifying the original
         int[] sorted = Arrays.copyOf(numbers, numbers.length);
         
-        // Implement the Bubble Sort algorithm here
+        // Implement the Bubble Sort algorithm
+        int n = sorted.length;
+        boolean swapped;
+        
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            
+            for (int j = 0; j < n - i - 1; j++) {
+                // If current element is greater than the next element, swap them
+                if (sorted[j] > sorted[j + 1]) {
+                    // Swap sorted[j] and sorted[j+1]
+                    int temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            
+            // If no swapping occurred in this pass, the array is already sorted
+            if (!swapped) {
+                break;
+            }
+        }
         
         return sorted; // Return the sorted array
     }

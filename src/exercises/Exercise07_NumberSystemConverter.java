@@ -17,9 +17,31 @@ public class Exercise07_NumberSystemConverter {
      * @return The binary number as a string
      */
     public static String decimal2Binary(int decimal) {
-        // TODO: Implement the conversion from decimal to binary
-        // Note: Use bit operations or the modulo operator
-        return ""; // Replace this value with the correct calculation
+        // Handle special case for 0
+        if (decimal == 0) {
+            return "0";
+        }
+        
+        // Handle negative numbers
+        boolean isNegative = decimal < 0;
+        if (isNegative) {
+            decimal = -decimal;
+        }
+        
+        StringBuilder binary = new StringBuilder();
+        
+        // Convert decimal to binary
+        while (decimal > 0) {
+            binary.insert(0, decimal % 2);
+            decimal /= 2;
+        }
+        
+        // Add negative sign if needed
+        if (isNegative) {
+            binary.insert(0, "-");
+        }
+        
+        return binary.toString();
     }
     
     /**
@@ -29,9 +51,31 @@ public class Exercise07_NumberSystemConverter {
      * @return The octal number as a string
      */
     public static String decimal2octal(int decimal) {
-        // TODO: Implement the conversion from decimal to octal
-        // Note: Use bit operations or the modulo operator
-        return ""; // Replace this value with the correct calculation
+        // Handle special case for 0
+        if (decimal == 0) {
+            return "0";
+        }
+        
+        // Handle negative numbers
+        boolean isNegative = decimal < 0;
+        if (isNegative) {
+            decimal = -decimal;
+        }
+        
+        StringBuilder octal = new StringBuilder();
+        
+        // Convert decimal to octal
+        while (decimal > 0) {
+            octal.insert(0, decimal % 8);
+            decimal /= 8;
+        }
+        
+        // Add negative sign if needed
+        if (isNegative) {
+            octal.insert(0, "-");
+        }
+        
+        return octal.toString();
     }
     
     /**
@@ -41,10 +85,39 @@ public class Exercise07_NumberSystemConverter {
      * @return The hexadecimal number as a string
      */
     public static String decimal2hex(int decimal) {
-        // TODO: Implement the conversion from decimal to hexadecimal
-        // Note: Use bit operations or the modulo operator
-        // Remember that hexadecimal digits above 9 are represented as A to F
-        return ""; // Replace this value with the correct calculation
+        // Handle special case for 0
+        if (decimal == 0) {
+            return "0";
+        }
+        
+        // Handle negative numbers
+        boolean isNegative = decimal < 0;
+        if (isNegative) {
+            decimal = -decimal;
+        }
+        
+        StringBuilder hex = new StringBuilder();
+        
+        // Convert decimal to hexadecimal
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            
+            // Convert values 10-15 to A-F
+            if (remainder < 10) {
+                hex.insert(0, remainder);
+            } else {
+                hex.insert(0, (char) ('A' + remainder - 10));
+            }
+            
+            decimal /= 16;
+        }
+        
+        // Add negative sign if needed
+        if (isNegative) {
+            hex.insert(0, "-");
+        }
+        
+        return hex.toString();
     }
     
     /**
@@ -54,9 +127,38 @@ public class Exercise07_NumberSystemConverter {
      * @return The decimal number
      */
     public static int binary2decimal(String binary) {
-        // TODO: Implement the conversion from binary to decimal
-        // Note: Go through the string and calculate the value of each position
-        return 0; // Replace this value with the correct calculation
+        // Handle special case for null or empty string
+        if (binary == null || binary.isEmpty()) {
+            return 0;
+        }
+        
+        // Handle negative numbers
+        boolean isNegative = binary.startsWith("-");
+        if (isNegative) {
+            binary = binary.substring(1);
+        }
+        
+        int decimal = 0;
+        
+        // Convert binary to decimal
+        for (int i = 0; i < binary.length(); i++) {
+            char digit = binary.charAt(i);
+            
+            if (digit == '1') {
+                decimal = decimal * 2 + 1;
+            } else if (digit == '0') {
+                decimal = decimal * 2;
+            } else {
+                throw new IllegalArgumentException("Invalid binary digit: " + digit);
+            }
+        }
+        
+        // Apply negative sign if needed
+        if (isNegative) {
+            decimal = -decimal;
+        }
+        
+        return decimal;
     }
     
     public static void main(String[] args) {

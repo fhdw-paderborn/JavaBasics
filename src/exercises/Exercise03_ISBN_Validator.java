@@ -25,9 +25,44 @@ public class Exercise03_ISBN_Validator {
      * @return true if the ISBN is valid, otherwise false
      */
     public static boolean isValidISBN10(String isbn) {
-        // TODO: Implement the validation of the ISBN-10
-        // Note: Use a loop to calculate the checksum
-        return false; // Replace this value with the correct calculation
+        // Check if ISBN has correct length
+        if (isbn == null || isbn.length() != 10) {
+            return false;
+        }
+        
+        int sum = 0;
+        
+        // Process each character
+        for (int i = 0; i < 9; i++) {
+            char c = isbn.charAt(i);
+            
+            // Check if character is a digit
+            if (c < '0' || c > '9') {
+                return false;
+            }
+            
+            // Add to sum (digit * weight)
+            int digit = c - '0';
+            sum += digit * (10 - i);
+        }
+        
+        // Process the last character (check digit)
+        char lastChar = isbn.charAt(9);
+        int lastDigit;
+        
+        if (lastChar == 'X' || lastChar == 'x') {
+            lastDigit = 10;
+        } else if (lastChar >= '0' && lastChar <= '9') {
+            lastDigit = lastChar - '0';
+        } else {
+            return false; // Invalid character
+        }
+        
+        // Add the check digit to the sum
+        sum += lastDigit;
+        
+        // Check if the ISBN is valid
+        return sum % 11 == 0;
     }
     
     public static void main(String[] args) {
@@ -41,8 +76,8 @@ public class Exercise03_ISBN_Validator {
         System.out.println("ISBN " + invalidISBN + " is " + 
                           (isValidISBN10(invalidISBN) ? "valid." : "invalid."));
         
-        // Example of an ISBN-10 with 'X' as the check digit
-        String isbnWithX = "3866801199X";
+        // Example of an ISBN-10 with 'X' as the check digit. 
+        String isbnWithX = "386680119X";
         System.out.println("ISBN " + isbnWithX + " is " + 
                           (isValidISBN10(isbnWithX) ? "valid." : "invalid."));
     }

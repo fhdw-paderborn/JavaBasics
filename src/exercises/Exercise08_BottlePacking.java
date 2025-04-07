@@ -19,11 +19,26 @@ public class Exercise08_BottlePacking {
      * @param totalBottles The total number of bottles to pack
      * @param bottlesPerCarton The number of bottles that can fit in a single carton
      * @return An array of two integers: [numberOfCartonsNeeded, remainingBottles]
+     * @throws ArithmeticException if bottlesPerCarton is zero
      */
     public static int[] calculateBottlePacking(int totalBottles, int bottlesPerCarton) {
-        // TODO: Implement the calculation of cartons needed and remaining bottles
-        // Note: Use integer division and modulo operations
-        return new int[] {0, 0}; // Replace this with the correct calculation
+        // Handle negative bottles by treating it as 0
+        if (totalBottles < 0) {
+            totalBottles = 0;
+        }
+        
+        // Handle division by zero
+        if (bottlesPerCarton == 0) {
+            throw new ArithmeticException("Cannot pack bottles into cartons with zero capacity");
+        }
+        
+        // Calculate number of cartons needed
+        int cartonsNeeded = totalBottles / bottlesPerCarton;
+        
+        // Calculate remaining bottles
+        int remainingBottles = totalBottles % bottlesPerCarton;
+        
+        return new int[] {cartonsNeeded, remainingBottles};
     }
     
     public static void main(String[] args) {

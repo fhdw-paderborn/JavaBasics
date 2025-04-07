@@ -20,9 +20,15 @@ public class Exercise05_InterestCalclator {
      * @return The final value after the given period
      */
     public static double calculateCompoundInterest(double initialValue, double interestRate, int years) {
-        // TODO: Implement the calculation of the final value with compound interest
-        // Note: Use a loop to simulate the annual interest accumulation
-        return 0.0; // Replace this value with the correct calculation
+        double finalValue = initialValue;
+        
+        // Loop through each year and apply compound interest
+        for (int i = 0; i < years; i++) {
+            finalValue *= (1 + interestRate);
+        }
+        
+        // Round to 2 decimal places
+        return Math.round(finalValue * 100) / 100.0;
     }
     
     public static void main(String[] args) {

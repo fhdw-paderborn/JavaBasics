@@ -17,9 +17,30 @@ public class Exercise04_PrimeNumberTest {
      * @return true if the number is a prime number, otherwise false
      */
     public static boolean isPrimeNumber(int number) {
-        // TODO: Implement the prime number test
-        // Note: Use a loop and check the divisors
-        return false; // Replace this value with the correct calculation
+        // Handle edge cases
+        if (number <= 1) {
+            return false; // Numbers less than or equal to 1 are not prime
+        }
+        
+        // 2 is the only even prime number
+        if (number == 2) {
+            return true;
+        }
+        
+        // Even numbers greater than 2 are not prime
+        if (number % 2 == 0) {
+            return false;
+        }
+        
+        // Check for divisibility by odd numbers from 3 to the square root of the number
+        for (int i = 3; i * i <= number; i += 2) {
+            if (number % i == 0) {
+                return false; // Number is divisible by i, so it's not a prime
+            }
+        }
+        
+        // If we get here, the number is prime
+        return true;
     }
     
     public static void main(String[] args) {

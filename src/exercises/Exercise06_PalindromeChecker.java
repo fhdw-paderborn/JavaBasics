@@ -22,10 +22,23 @@ public class Exercise06_PalindromeChecker {
      * @return true if the text is a palindrome, otherwise false
      */
     public static boolean isPalindrome(String text) {
-        // TODO: Implement the palindrome check
-        // Note: Remove spaces and convert to lowercase,
-        // then check if the text reads the same forward and backward
-        return false; // Replace this value with the correct calculation
+        // Handle edge cases
+        if (text == null) {
+            return false;
+        }
+        
+        // Convert to lowercase and remove spaces and punctuation
+        String cleanText = text.toLowerCase().replaceAll("[^a-z0-9]", "");
+        
+        // Check if the text is the same forward and backward
+        int length = cleanText.length();
+        for (int i = 0; i < length / 2; i++) {
+            if (cleanText.charAt(i) != cleanText.charAt(length - 1 - i)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
     
     public static void main(String[] args) {
