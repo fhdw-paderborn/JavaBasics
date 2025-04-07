@@ -11,7 +11,7 @@ import java.util.Map;
  * 
  * Implement a method that reads a text and counts the frequency of each word.
  */
-public class Exercise08_WordCounter {
+public class Exercise10_WordCounter {
     
     /**
      * Counts the frequency of words in a text.

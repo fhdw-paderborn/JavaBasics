@@ -8,7 +8,7 @@ package exercises;
  * 
  * Implement methods to convert between decimal, binary, octal, and hexadecimal.
  */
-public class Exercise09_NumberSystemConverter {
+public class Exercise07_NumberSystemConverter {
     
     /**
      * Converts a decimal number to a binary number (as a string).

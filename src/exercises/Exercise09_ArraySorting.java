@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 
  * Implement the Bubble Sort algorithm to sort the array.
  */
-public class Exercise07_ArraySorting {
+public class Exercise09_ArraySorting {
     
     /**
      * Sorts an array of numbers using the Bubble Sort algorithm.

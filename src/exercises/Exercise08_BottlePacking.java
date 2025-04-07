@@ -11,7 +11,7 @@ package exercises;
  * For example, if you have 25 bottles and each carton can hold 6 bottles,
  * you will need 4 cartons (which can hold 24 bottles in total) and 1 bottle will remain unpacked.
  */
-public class Exercise10_BottlePacking {
+public class Exercise08_BottlePacking {
     
     /**
      * Calculates the number of cartons needed to pack the bottles and the number of bottles that remain unpacked.

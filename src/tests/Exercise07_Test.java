@@ -2,75 +2,71 @@ package tests;
 
 import org.junit.Test;
 
-import exercises.Exercise07_ArraySorting;
+import exercises.Exercise07_NumberSystemConverter;
 
 import static org.junit.Assert.*;
-import java.util.Arrays;
 
 public class Exercise07_Test {
     
     @Test
-    public void testRandomArray() {
-        // Random array
-        int[] input = {5, 3, 8, 1, 9, 2, 7, 4, 6};
-        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
+    public void testDezimalZuBinaer() {
+        // Test decimal to binary
+        assertEquals("0", Exercise07_NumberSystemConverter.decimal2Binary(0));
+        assertEquals("1", Exercise07_NumberSystemConverter.decimal2Binary(1));
+        assertEquals("1010", Exercise07_NumberSystemConverter.decimal2Binary(10));
+        assertEquals("101010", Exercise07_NumberSystemConverter.decimal2Binary(42));
+        assertEquals("11111111", Exercise07_NumberSystemConverter.decimal2Binary(255));
+        assertEquals("10000000000", Exercise07_NumberSystemConverter.decimal2Binary(1024));
     }
     
     @Test
-    public void testReverseOrderArray() {
-        // Array in reverse order
-        int[] input = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
+    public void testDezimalZuOktal() {
+        // Test decimal to octal
+        assertEquals("0", Exercise07_NumberSystemConverter.decimal2octal(0));
+        assertEquals("1", Exercise07_NumberSystemConverter.decimal2octal(1));
+        assertEquals("12", Exercise07_NumberSystemConverter.decimal2octal(10));
+        assertEquals("52", Exercise07_NumberSystemConverter.decimal2octal(42));
+        assertEquals("377", Exercise07_NumberSystemConverter.decimal2octal(255));
+        assertEquals("2000", Exercise07_NumberSystemConverter.decimal2octal(1024));
     }
     
     @Test
-    public void testAlreadySortedArray() {
-        // Already sorted array
-        int[] input = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
+    public void testDezimalZuHexadezimal() {
+        // Test decimal to hexadecimal
+        assertEquals("0", Exercise07_NumberSystemConverter.decimal2hex(0));
+        assertEquals("1", Exercise07_NumberSystemConverter.decimal2hex(1));
+        assertEquals("A", Exercise07_NumberSystemConverter.decimal2hex(10));
+        assertEquals("2A", Exercise07_NumberSystemConverter.decimal2hex(42));
+        assertEquals("FF", Exercise07_NumberSystemConverter.decimal2hex(255));
+        assertEquals("400", Exercise07_NumberSystemConverter.decimal2hex(1024));
+        assertEquals("1F4", Exercise07_NumberSystemConverter.decimal2hex(500));
     }
     
     @Test
-    public void testEmptyArray() {
-        // Empty array
-        int[] input = {};
-        int[] expected = {};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
+    public void testBinaerZuDezimal() {
+        // Test binary to decimal
+        assertEquals(0, Exercise07_NumberSystemConverter.binary2decimal("0"));
+        assertEquals(1, Exercise07_NumberSystemConverter.binary2decimal("1"));
+        assertEquals(10, Exercise07_NumberSystemConverter.binary2decimal("1010"));
+        assertEquals(42, Exercise07_NumberSystemConverter.binary2decimal("101010"));
+        assertEquals(255, Exercise07_NumberSystemConverter.binary2decimal("11111111"));
+        assertEquals(1024, Exercise07_NumberSystemConverter.binary2decimal("10000000000"));
     }
     
     @Test
-    public void testSingleElementArray() {
-        // Array with a single element
-        int[] input = {42};
-        int[] expected = {42};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
+    public void testSpecialCases() {
+        // Test special cases like negative numbers and limits
+        assertEquals("-101", Exercise07_NumberSystemConverter.decimal2Binary(-5));
+        assertEquals("-12", Exercise07_NumberSystemConverter.decimal2octal(-10));
+        assertEquals("-A", Exercise07_NumberSystemConverter.decimal2hex(-10));
+        assertEquals(-42, Exercise07_NumberSystemConverter.binary2decimal("-101010"));
     }
     
     @Test
-    public void testDuplicateElements() {
-        // Array with duplicates
-        int[] input = {3, 5, 1, 3, 8, 5, 2, 5};
-        int[] expected = {1, 2, 3, 3, 5, 5, 5, 8};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
-    }
-    
-    @Test
-    public void testNegativeNumbers() {
-        // Array with negative numbers
-        int[] input = {-5, -3, -8, -1, 0, 2, -7, 4, -6};
-        int[] expected = {-8, -7, -6, -5, -3, -1, 0, 2, 4};
-        assertArrayEquals(expected, Exercise07_ArraySorting.bubbleSort(input));
-    }
-    
-    @Test
-    public void testOriginalArrayNotModified() {
-        // Check that the original array is not modified
-        int[] input = {5, 3, 8, 1, 9};
-        int[] original = Arrays.copyOf(input, input.length);
-        Exercise07_ArraySorting.bubbleSort(input);
-        assertArrayEquals(original, input);
+    public void testLargeNumbers() {
+        // Test large numbers
+        assertEquals("1111111111111111111111111111111", Exercise07_NumberSystemConverter.decimal2Binary(Integer.MAX_VALUE));
+        assertEquals("17777777777", Exercise07_NumberSystemConverter.decimal2octal(Integer.MAX_VALUE));
+        assertEquals("7FFFFFFF", Exercise07_NumberSystemConverter.decimal2hex(Integer.MAX_VALUE));
     }
 }

@@ -2,65 +2,88 @@ package tests;
 
 import org.junit.Test;
 
-import exercises.Exercise10_BottlePacking;
+import exercises.Exercise10_WordCounter;
 
 import static org.junit.Assert.*;
+import java.util.Map;
 
 public class Exercise10_Test {
     
     @Test
-    public void testExactPacking() {
-        // Test cases where bottles fit exactly into cartons
-        assertArrayEquals(new int[] {5, 0}, Exercise10_BottlePacking.calculateBottlePacking(30, 6));
-        assertArrayEquals(new int[] {10, 0}, Exercise10_BottlePacking.calculateBottlePacking(100, 10));
-        assertArrayEquals(new int[] {4, 0}, Exercise10_BottlePacking.calculateBottlePacking(48, 12));
-    }
-    
-    @Test
-    public void testWithRemainingBottles() {
-        // Test cases where some bottles remain unpacked
-        assertArrayEquals(new int[] {4, 1}, Exercise10_BottlePacking.calculateBottlePacking(25, 6));
-        assertArrayEquals(new int[] {8, 4}, Exercise10_BottlePacking.calculateBottlePacking(100, 12));
-        assertArrayEquals(new int[] {7, 3}, Exercise10_BottlePacking.calculateBottlePacking(38, 5));
-    }
-    
-    @Test
-    public void testZeroBottles() {
-        // Test case with zero bottles
-        assertArrayEquals(new int[] {0, 0}, Exercise10_BottlePacking.calculateBottlePacking(0, 6));
-    }
-    
-    @Test
-    public void testEdgeCases() {
-        // Test with single bottle per carton
-        assertArrayEquals(new int[] {10, 0}, Exercise10_BottlePacking.calculateBottlePacking(10, 1));
+    public void testSimpleText() {
+        // Simple text
+        String text = "Der Hund läuft im Garten. Der Garten ist groß.";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
         
-        // Test with large numbers
-        assertArrayEquals(new int[] {1000, 0}, Exercise10_BottlePacking.calculateBottlePacking(10000, 10));
-        assertArrayEquals(new int[] {666, 4}, Exercise10_BottlePacking.calculateBottlePacking(9999, 15));
+        assertEquals(7, result.size()); // 6 different words
+        assertEquals(Integer.valueOf(2), result.get("der"));
+        assertEquals(Integer.valueOf(2), result.get("garten"));
+        assertEquals(Integer.valueOf(1), result.get("hund"));
+        assertEquals(Integer.valueOf(1), result.get("läuft"));
+        assertEquals(Integer.valueOf(1), result.get("im"));
+        assertEquals(Integer.valueOf(1), result.get("ist"));
+        assertEquals(Integer.valueOf(1), result.get("groß"));
     }
     
     @Test
-    public void testNegativeScenarios() {
-        // Test with negative number of bottles (should handle as zero or appropriate value)
-        assertArrayEquals(new int[] {0, 0}, Exercise10_BottlePacking.calculateBottlePacking(-10, 5));
+    public void testEmptyText() {
+        // Empty text
+        String text = "";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
         
-        // Test with zero capacity per carton (should handle divide by zero)
-        try {
-            Exercise10_BottlePacking.calculateBottlePacking(10, 0);
-            fail("Expected ArithmeticException for division by zero");
-        } catch (ArithmeticException e) {
-            // Expected exception
-        } catch (Exception e) {
-            fail("Expected ArithmeticException but got " + e.getClass().getSimpleName());
-        }
+        assertTrue(result.isEmpty());
     }
     
     @Test
-    public void testSingleCartonScenarios() {
-        // Test cases where all bottles fit in a single carton
-        assertArrayEquals(new int[] {1, 0}, Exercise10_BottlePacking.calculateBottlePacking(5, 5));
-        assertArrayEquals(new int[] {1, 0}, Exercise10_BottlePacking.calculateBottlePacking(10, 15));
-        assertArrayEquals(new int[] {1, 2}, Exercise10_BottlePacking.calculateBottlePacking(7, 5));
+    public void testSingleWord() {
+        // A single word
+        String text = "Java";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
+        
+        assertEquals(1, result.size());
+        assertEquals(Integer.valueOf(1), result.get("java"));
+    }
+    
+    @Test
+    public void testCaseInsensitivity() {
+        // Case insensitivity
+        String text = "Java java JAVA jAvA";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
+        
+        assertEquals(1, result.size());
+        assertEquals(Integer.valueOf(4), result.get("java"));
+    }
+    
+    @Test
+    public void testPunctuation() {
+        // Punctuation
+        String text = "Hallo, Welt! Hallo. Welt? Hallo; Welt: Hallo-Welt.";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
+        
+        assertEquals(3, result.size());
+        assertEquals(Integer.valueOf(3), result.get("hallo"));
+        assertEquals(Integer.valueOf(3), result.get("welt"));
+        assertEquals(Integer.valueOf(1), result.get("hallo-welt"));
+    }
+    
+    @Test
+    public void testMixedContent() {
+        // Mixed content with numbers and special characters
+        String text = "Java 8 ist großartig! C++ 11 und Python 3.6 sind auch gut.";
+        Map<String, Integer> result = Exercise10_WordCounter.zaehleWoerter(text);
+        
+        assertEquals(12, result.size());
+        assertEquals(Integer.valueOf(1), result.get("java"));
+        assertEquals(Integer.valueOf(1), result.get("8"));
+        assertEquals(Integer.valueOf(1), result.get("ist"));
+        assertEquals(Integer.valueOf(1), result.get("großartig"));
+        assertEquals(Integer.valueOf(1), result.get("c++"));
+        assertEquals(Integer.valueOf(1), result.get("11"));
+        assertEquals(Integer.valueOf(1), result.get("und"));
+        assertEquals(Integer.valueOf(1), result.get("python"));
+        assertEquals(Integer.valueOf(1), result.get("3.6"));
+        assertEquals(Integer.valueOf(1), result.get("sind"));
+        assertEquals(Integer.valueOf(1), result.get("auch"));
+        assertEquals(Integer.valueOf(1), result.get("gut"));
     }
 }
