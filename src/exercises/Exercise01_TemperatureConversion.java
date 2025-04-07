@@ -6,7 +6,6 @@ package exercises;
  * This exercise is about converting temperatures between
  * Celsius and Fahrenheit using arithmetic operators.
  * 
- * Formula: Fahrenheit = Celsius * 9/5 + 32
  */
 public class Exercise01_TemperatureConversion {
     
@@ -18,7 +17,6 @@ public class Exercise01_TemperatureConversion {
      */
     public static double celsiusToFahrenheit(double celsius) {
         // TODO: Implement the conversion from Celsius to Fahrenheit
-        // Use the formula: Fahrenheit = Celsius * 9/5 + 32
         return 0.0; // Replace this value with the correct calculation
     }
     

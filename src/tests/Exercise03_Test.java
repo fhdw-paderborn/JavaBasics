@@ -6,7 +6,7 @@ import exercises.Exercise03_ISBN_Validator;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise03 {
+public class Exercise03_Test {
     
     @Test
     public void testValidISBNs() {

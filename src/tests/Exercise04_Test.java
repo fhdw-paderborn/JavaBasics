@@ -6,7 +6,7 @@ import exercises.Exercise04_PrimeNumberTest;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise04 {
+public class Exercise04_Test {
     
     @Test
     public void testSmallPrimes() {

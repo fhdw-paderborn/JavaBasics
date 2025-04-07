@@ -22,7 +22,7 @@ public class JavaBasicsDemo {
         System.out.println("char buchstabe = " + buchstabe);
         
         // Byte - 8 bits (-128 bis 127)
-        byte kleinsteZahl = 127;
+        byte kleinsteZahl = 0b00000010;
         System.out.println("byte kleinsteZahl = " + kleinsteZahl);
         
         // Short - 16 bits (-32,768 bis 32,767)
@@ -34,7 +34,7 @@ public class JavaBasicsDemo {
         System.out.println("int ganzeZahl = " + ganzeZahl);
         
         // Long - 64 bits (-2^63 bis 2^63-1)
-        long großeZahl = 9223372036854775807L; // Beachte das 'L' am Ende
+        long großeZahl = 922_3372_0368_5477_5807L; // Beachte das 'L' am Ende
         System.out.println("long großeZahl = " + großeZahl);
         
         // Float - 32 bits (Gleitkommazahl mit einfacher Genauigkeit)
@@ -52,9 +52,9 @@ public class JavaBasicsDemo {
         System.out.println("=== Typinferenz (var) ===");
         
         // var wurde in Java 10 eingeführt
-        var text = "Hallo Welt"; // Der Compiler erkennt, dass es ein String ist
+        var text = "Hallo Welt!!!"; // Der Compiler erkennt, dass es ein String ist
         var nummer = 42; // Der Compiler erkennt, dass es ein int ist
-        var pi = 3.14159; // Der Compiler erkennt, dass es ein double ist
+        var pi = 3.14159888; // Der Compiler erkennt, dass es ein double ist
         
         System.out.println("var text = " + text + " (Typ: " + text.getClass().getSimpleName() + ")");
         System.out.println("var nummer = " + nummer + " (Typ: Integer)");

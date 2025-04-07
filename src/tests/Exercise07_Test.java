@@ -7,7 +7,7 @@ import exercises.Exercise07_ArraySorting;
 import static org.junit.Assert.*;
 import java.util.Arrays;
 
-public class Test_Exercise07 {
+public class Exercise07_Test {
     
     @Test
     public void testRandomArray() {

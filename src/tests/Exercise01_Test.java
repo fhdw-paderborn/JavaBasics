@@ -6,7 +6,7 @@ import exercises.Exercise01_TemperatureConversion;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise01 {
+public class Exercise01_Test {
     
     private static final double DELTA = 0.001; // Tolerance for floating-point comparisons
     

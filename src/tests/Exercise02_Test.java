@@ -6,7 +6,7 @@ import exercises.Exercise02_LeapYear;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise02 {
+public class Exercise02_Test {
     
     @Test
     public void testNormalLeapYears() {

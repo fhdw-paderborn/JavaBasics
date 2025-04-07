@@ -6,7 +6,7 @@ import exercises.Exercise09_NumberSystemConverter;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise09 {
+public class Exercise09_Test {
     
     @Test
     public void testDezimalZuBinaer() {

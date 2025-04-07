@@ -6,7 +6,7 @@ import exercises.Exercise06_PalindromeChecker;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise06 {
+public class Exercise06_Test {
     
     @Test
     public void testSimplePalindromes() {

@@ -6,7 +6,7 @@ import exercises.Exercise05_InterestCalclator;
 
 import static org.junit.Assert.*;
 
-public class Test_Exercise05 {
+public class Exercise05_Test {
     
     private static final double DELTA = 0.01; // Tolerance for floating-point comparisons
     

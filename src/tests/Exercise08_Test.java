@@ -7,7 +7,7 @@ import exercises.Exercise08_WordCounter;
 import static org.junit.Assert.*;
 import java.util.Map;
 
-public class Test_Exercise08 {
+public class Exercise08_Test {
     
     @Test
     public void testSimpleText() {
